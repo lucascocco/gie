@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Estoque;
-use App\Http\Requests\EstoqueResquest;
+use App\Http\Requests\EstoqueRequest;
 
 class EstoquesController extends Controller
 {
@@ -30,8 +30,8 @@ class EstoquesController extends Controller
     }
 
     public function edit($id) {
-        $ator = Estoque::find($id);
-        return view('estoques.edit', compact('ator'));
+        $estoques = Estoque::find($id);
+        return view('estoques.edit', compact('estoques'));
     }
 
     public function update(EstoqueRequest $request, $id) {

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EstoqueResquest extends FormRequest
+class EstoqueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class EstoqueResquest extends FormRequest
     public function rules()
     {
         return [
-
+            'cidade_id'=>'required'
         ];
     }
 }

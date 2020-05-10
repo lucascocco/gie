@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
-    <h3>Nova Nacionaliade</h3>
+    <h3>Novo Estoque</h3>
 
     @if($errors->any())
         <ul class="alert alert-danger">
@@ -18,17 +18,14 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('endereco', 'Nome:') !!}
+        {!! Form::label('endereco', 'Endereço:') !!}
         {!! Form::text('endereco', null, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('id_cidade', 'Cidade') !!}
-        {!! Form::select('id_cidade',
-                array(
-                    1=>'Tapejara'
-                ),
-
+        {!! Form::label('cidade_id', 'Cidade') !!}
+        {!! Form::select('cidade_id',
+                \App\Cidade::orderBy('nome')->pluck('nome', 'id')->toArray(),
                 null, ['class'=>'form-control', 'required']) !!}
     </div>
 

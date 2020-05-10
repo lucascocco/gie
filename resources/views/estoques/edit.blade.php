@@ -11,7 +11,7 @@
         </ul>
     @endif
 
-    {!! Form::open(['route'=>'estoques.update', 'id'=>$estoques->id, 'method'=>'put']) !!}
+    {!! Form::open(['route'=>['estoques.update', 'id'=>$estoques->id], 'method'=>'put']) !!}
     <div class="form-group">
         {!! Form::label('nome', 'Nome:') !!}
         {!! Form::text('nome', $estoques->nome, ['class'=>'form-control', 'required']) !!}
@@ -23,13 +23,10 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('id_cidade', 'Cidade') !!}
-        {!! Form::select('id_cidade',
-                array(
-                    1=>'Tapejara'
-                ),
-
-                $estoques->id_cidade, ['class'=>'form-control', 'required']) !!}
+        {!! Form::label('cidade_id', 'Cidade') !!}
+        {!! Form::select('cidade_id',
+                \App\Cidade::orderBy('nome')->pluck('nome', 'id')->toArray(),
+                $estoques->cidade_id, ['class'=>'form-control', 'required']) !!}
     </div>
 
 
