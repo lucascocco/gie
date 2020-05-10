@@ -13,12 +13,12 @@
 
     {!! Form::open(['route'=>['estoques.update', 'id'=>$estoques->id], 'method'=>'put']) !!}
     <div class="form-group">
-        {!! Form::label('nome', 'Nome:') !!}
+        {!! Form::label('nome', 'Nome') !!}
         {!! Form::text('nome', $estoques->nome, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('endereco', 'Nome:') !!}
+        {!! Form::label('endereco', 'Endereço') !!}
         {!! Form::text('endereco', $estoques->endereco, ['class'=>'form-control', 'required']) !!}
     </div>
 
