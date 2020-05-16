@@ -12,9 +12,13 @@
             }).then(function (isConfirm) {
                 if (isConfirm.value) {
                     $.get('/'+ @yield('table-delete')+'/'+id+'/destroy', function (data) {
-                        swal.fire('Deletado', 'Foi', 'success').then(function () {
-                            window.location.reload();
-                        });
+                        if (data.staus == 200) {
+                            swal.fire('Deletado', 'Registro deletado com sucesso', 'success').then(function () {
+                                window.location.reload();
+                            });
+                        } else {
+                            swal.fire('Atenção', 'Ocorreu algum problema durante a deleção, contato o admin', 'error')
+                        }
                     });
                 }
             });

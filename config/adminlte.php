@@ -219,6 +219,11 @@ return [
             'url'  => 'produtos',
             'icon' => 'fas fa-fw fa-bars',
         ],
+        [
+            'text' => 'Produto Estoque',
+            'url'  => 'produtoestoques',
+            'icon' => 'fas fa-fw fa-box-open',
+        ],
     ],
 
     /*

@@ -12,4 +12,8 @@ class Estoque extends Model {
         return $this->belongsTo("App\Cidade");
     }
 
+    public function produto_estoques() {
+        return $this->hasMany("App\ProdutoEstoque");
+    }
+
 }

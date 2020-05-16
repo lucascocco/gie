@@ -18,6 +18,10 @@ class CreateProdutoEstoquesTable extends Migration
             $table->integer('quantidade');
             $table->integer('quantidade_min');
             $table->decimal('valor');
+            $table->bigInteger('produto_id')->unsigned();
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->bigInteger('estoque_id')->unsigned();
+            $table->foreign('estoque_id')->references('id')->on('estoques');
             $table->timestamps();
         });
     }

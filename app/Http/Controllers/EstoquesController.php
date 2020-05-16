@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Estoque;
 use App\Http\Requests\EstoqueRequest;
@@ -25,8 +26,17 @@ class EstoquesController extends Controller
     }
 
     public function destroy($id) {
-        Estoque::find($id)->delete();
-        return redirect('estoques');
+
+        try {
+            Estoque::find($id)->delete();
+            $ret = array('status'=>200, 'msg'=>'NULL');
+        } catch (QueryException $e) {
+            $ret = array('status'=>500, 'msg'=>$e->getMessage());
+        } catch (\PDOException $e) {
+            $ret = array('status'=>500, 'msg'=>$e->getMessage());
+        }
+
+        return $ret;
     }
 
     public function edit($id) {

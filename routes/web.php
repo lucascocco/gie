@@ -21,27 +21,37 @@ use Illuminate\Support\Facades\Route;
 //    Route::post('store',       ['as'=>'usuario.store',   'uses'=>'AtoresController@store'  ]);
 //    Route::put('{id}/update',  ['as'=>'usuario.update',  'uses'=>'AtoresController@update' ]);
 //});
+Route::group(['middleware'=>'auth'], function () {
+    Route::group(['prefix'=>'estoques', 'where'=>['id'=>'[0-9]+']], function() {
+        Route::get('',             ['as'=>'estoques',         'uses'=>'EstoquesController@index'  ]);
+        Route::get('create',       ['as'=>'estoques.create',  'uses'=>'EstoquesController@create' ]);
+        Route::get('{id}/destroy', ['as'=>'estoques.destroy', 'uses'=>'EstoquesController@destroy']);
+        Route::get('{id}/edit',    ['as'=>'estoques.edit',    'uses'=>'EstoquesController@edit'   ]);
+        Route::post('store',       ['as'=>'estoques.store',   'uses'=>'EstoquesController@store'  ]);
+        Route::put('{id}/update',  ['as'=>'estoques.update',  'uses'=>'EstoquesController@update' ]);
+    });
 
-Route::group(['prefix'=>'estoques', 'where'=>['id'=>'[0-9]+']], function() {
-    Route::get('',             ['as'=>'estoques',         'uses'=>'EstoquesController@index'  ]);
-    Route::get('create',       ['as'=>'estoques.create',  'uses'=>'EstoquesController@create' ]);
-    Route::get('{id}/destroy', ['as'=>'estoques.destroy', 'uses'=>'EstoquesController@destroy']);
-    Route::get('{id}/edit',    ['as'=>'estoques.edit',    'uses'=>'EstoquesController@edit'   ]);
-    Route::post('store',       ['as'=>'estoques.store',   'uses'=>'EstoquesController@store'  ]);
-    Route::put('{id}/update',  ['as'=>'estoques.update',  'uses'=>'EstoquesController@update' ]);
-});
+    Route::group(['prefix'=>'produtos', 'where'=>['id'=>'[0-9]+']], function() {
+        Route::get('',             ['as'=>'produtos',         'uses'=>'ProdutosController@index'  ]);
+        Route::get('create',       ['as'=>'produtos.create',  'uses'=>'ProdutosController@create' ]);
+        Route::get('{id}/destroy', ['as'=>'produtos.destroy', 'uses'=>'ProdutosController@destroy']);
+        Route::get('{id}/edit',    ['as'=>'produtos.edit',    'uses'=>'ProdutosController@edit'   ]);
+        Route::post('store',       ['as'=>'produtos.store',   'uses'=>'ProdutosController@store'  ]);
+        Route::put('{id}/update',  ['as'=>'produtos.update',  'uses'=>'ProdutosController@update' ]);
+    });
 
-Route::group(['prefix'=>'produtos', 'where'=>['id'=>'[0-9]+']], function() {
-    Route::get('',             ['as'=>'produtos',         'uses'=>'ProdutosController@index'  ]);
-    Route::get('create',       ['as'=>'produtos.create',  'uses'=>'ProdutosController@create' ]);
-    Route::get('{id}/destroy', ['as'=>'produtos.destroy', 'uses'=>'ProdutosController@destroy']);
-    Route::get('{id}/edit',    ['as'=>'produtos.edit',    'uses'=>'ProdutosController@edit'   ]);
-    Route::post('store',       ['as'=>'produtos.store',   'uses'=>'ProdutosController@store'  ]);
-    Route::put('{id}/update',  ['as'=>'produtos.update',  'uses'=>'ProdutosController@update' ]);
-});
+    Route::group(['prefix'=>'produtoestoques', 'where'=>['id'=>'[0-9]+']], function() {
+        Route::get('',             ['as'=>'produtoestoques',         'uses'=>'ProdutoEstoquesController@index'  ]);
+        Route::get('create',       ['as'=>'produtoestoques.create',  'uses'=>'ProdutoEstoquesController@create' ]);
+        Route::get('{id}/destroy', ['as'=>'produtoestoques.destroy', 'uses'=>'ProdutoEstoquesController@destroy']);
+        Route::get('{id}/edit',    ['as'=>'produtoestoques.edit',    'uses'=>'ProdutoEstoquesController@edit'   ]);
+        Route::post('store',       ['as'=>'produtoestoques.store',   'uses'=>'ProdutoEstoquesController@store'  ]);
+        Route::put('{id}/update',  ['as'=>'produtoestoques.update',  'uses'=>'ProdutoEstoquesController@update' ]);
+    });
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
 
 Auth::routes();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Produto;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProdutoRequest;
 
@@ -25,8 +26,16 @@ class ProdutosController extends Controller
     }
 
     public function destroy($id) {
-        Produto::find($id)->delete();
-        return redirect('produtos');
+        try {
+            Produto::find($id)->delete();
+            $ret = array('status'=>200, 'msg'=>'NULL');
+        } catch (QueryException $e) {
+            $ret = array('status'=>500, 'msg'=>$e->getMessage());
+        } catch (\PDOException $e) {
+            $ret = array('status'=>500, 'msg'=>$e->getMessage());
+        }
+
+        return $ret;
     }
 
     public function edit($id) {
