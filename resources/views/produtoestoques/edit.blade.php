@@ -29,17 +29,17 @@
 
     <div class="form-group">
         {!! Form::label('quantidade', 'Quantidade') !!}
-        {!! Form::text('quantidade', $produtoestoques->quantidade, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('quantidade', $produtoestoques->quantidade, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('quantidade_min', 'Quantidade Mínima') !!}
-        {!! Form::text('quantidade_min', $produtoestoques->quantidade_min, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('quantidade_min', $produtoestoques->quantidade_min, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('valor', 'Valor un.') !!}
-        {!! Form::text('valor', $produtoestoques->valor, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('valor', $produtoestoques->valor, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">

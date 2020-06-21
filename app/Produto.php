@@ -11,5 +11,8 @@ class Produto extends Model {
     public function produto_estoques() {
         return $this->hasMany("App\ProdutoEstoque");
     }
+    public function movimentos() {
+        return $this->hasMany("App\Movimentos");
+    }
 }
 

@@ -14,10 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Bem vindo ao sistema de Gerenciamento Interno de Estoque! <i class="fa fa-heart"></i>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

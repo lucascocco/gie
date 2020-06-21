@@ -46,8 +46,8 @@ return [
     */
 
     'logo' => '<b>GIE</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+//    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+//    'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -215,9 +215,20 @@ return [
             'icon' => 'fas fa-fw fa-building',
         ],
         [
+            'text' => 'Cidades',
+            'url'  => 'cidades',
+            'icon' => 'fas fa-fw fa-city',
+        ],
+        [
+            'text' => 'movimentos',
+            'url'  => 'movimentos',
+            'icon' => 'fas fa-fw fa-door-open',
+        ],
+        [
             'text' => 'Produtos',
             'url'  => 'produtos',
             'icon' => 'fas fa-fw fa-bars',
+            'id'=>'produtostaga'
         ],
         [
             'text' => 'Produto Estoque',

@@ -32,7 +32,7 @@ Route::group(['middleware'=>'auth'], function () {
     });
 
     Route::group(['prefix'=>'produtos', 'where'=>['id'=>'[0-9]+']], function() {
-        Route::get('',             ['as'=>'produtos',         'uses'=>'ProdutosController@index'  ]);
+        Route::any('',             ['as'=>'produtos',         'uses'=>'ProdutosController@index'  ]);
         Route::get('create',       ['as'=>'produtos.create',  'uses'=>'ProdutosController@create' ]);
         Route::get('{id}/destroy', ['as'=>'produtos.destroy', 'uses'=>'ProdutosController@destroy']);
         Route::get('{id}/edit',    ['as'=>'produtos.edit',    'uses'=>'ProdutosController@edit'   ]);
@@ -49,8 +49,19 @@ Route::group(['middleware'=>'auth'], function () {
         Route::put('{id}/update',  ['as'=>'produtoestoques.update',  'uses'=>'ProdutoEstoquesController@update' ]);
     });
 
+    Route::group(['prefix'=>'movimentos', 'where'=>['id'=>'[0-9]+']], function() {
+        Route::get('',             ['as'=>'movimentos',         'uses'=>'MovimentosController@index'  ]);
+        Route::get('create',       ['as'=>'movimentos.create',  'uses'=>'MovimentosController@create' ]);
+        Route::post('store',       ['as'=>'movimentos.store',   'uses'=>'MovimentosController@store'  ]);
+    });
+    Route::group(['prefix'=>'cidades', 'where'=>['id'=>'[0-9]+']], function() {
+        Route::get('',             ['as'=>'cidades',         'uses'=>'CidadesController@index'  ]);
+        Route::any('atualizaCidades',       ['as'=>'cidades.atualizaCidades',   'uses'=>'CidadesController@atualizaCidades'  ]);
+        Route::post('store',       ['as'=>'cidades.store',   'uses'=>'CidadesController@store'  ]);
+    });
+
     Route::get('/', function () {
-        return view('welcome');
+        return view('home');
     });
 });
 

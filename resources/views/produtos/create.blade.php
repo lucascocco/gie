@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Criar Produto', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Criar Produto', ['class'=>'btn btn-primary', 'id'=>'btnCreate']) !!}
         {!! Form::reset('Limpar', ['class'=>'btn btn-default']) !!}
     </div>
     {!! Form::close() !!}

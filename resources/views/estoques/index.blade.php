@@ -26,7 +26,7 @@
     </table>
     {{$estoques->links()}}
 
-    <a href="{{ route('estoques.create', []) }}" class="btn btn-info">Adicionar</a>
+    <a id="btnAdd" href="{{ route('estoques.create', []) }}" class="btn btn-info">Adicionar</a>
 
 @stop
 

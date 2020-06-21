@@ -26,13 +26,15 @@
         {!! Form::label('cidade_id', 'Cidade') !!}
         {!! Form::select('cidade_id',
                 \App\Cidade::orderBy('nome')->pluck('nome', 'id')->toArray(),
-                null, ['class'=>'form-control', 'required']) !!}
+                null, ['class'=>'form-control selectpicker', 'required', 'data-live-search'=>true]) !!}
     </div>
 
 
     <div class="form-group">
-        {!! Form::submit('Criar Estoque', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Criar Estoque', ['class'=>'btn btn-primary', 'id'=>'btnCreate']) !!}
         {!! Form::reset('Limpar', ['class'=>'btn btn-default']) !!}
     </div>
     {!! Form::close() !!}
 @stop
+
+@section('')

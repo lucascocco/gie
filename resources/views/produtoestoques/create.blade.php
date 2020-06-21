@@ -29,17 +29,17 @@
 
     <div class="form-group">
         {!! Form::label('quantidade', 'Quantidade') !!}
-        {!! Form::text('quantidade', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('quantidade', null, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('quantidade_min', 'Quantidade Mínima') !!}
-        {!! Form::text('quantidade_min', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('quantidade_min', null, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('valor', 'Valor un.') !!}
-        {!! Form::text('valor', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::number('valor', null, ['class'=>'form-control', 'required']) !!}
     </div>
 
     <div class="form-group">

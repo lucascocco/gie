@@ -9,8 +9,12 @@ use App\Http\Requests\ProdutoRequest;
 
 class ProdutosController extends Controller
 {
-    public function index() {
-        $produtos = Produto::orderBy('nome')->paginate(5);
+    public function index(Request $filtro) {
+        $filtragem = $filtro->get('desc_filtro');
+        if ($filtragem == null)
+            $produtos = Produto::orderBy('nome')->paginate(5);
+        else
+            $produtos = Produto::where('nome', 'like', "%".$filtragem."%")->orderBy("nome")->paginate(5)->setpath('produtos?desc_filtro='.$filtragem);
         return view('produtos.index', ['produtos'=>$produtos]);
     }
 

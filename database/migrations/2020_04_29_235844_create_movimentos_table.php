@@ -15,12 +15,11 @@ class CreateMovimentosTable extends Migration
     {
         Schema::create('movimentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantidade');
             $table->string('tipo', 1);
             $table->bigInteger('users_id')->unsigned();
-            $table->bigInteger('produtoestoque_id')->unsigned();
+            $table->bigInteger('estoque_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('produtoestoque_id')->references('id')->on('produto_estoques');
+            $table->foreign('estoque_id')->references('id')->on('estoques');
             $table->timestamps();
         });
     }

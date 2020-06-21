@@ -2,6 +2,17 @@
 
 @section('content')
     <h1>Produtos</h1>
+
+    {!! Form::Open(['name'=>'form_name', 'route'=>'produtos', 'method'=>'get']) !!}
+        <div class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="desc_filtro" class="form-control" style="width: 80% !important;" placeholder="Pesquisar...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    {!! Form::close() !!}
     <table class="table table-stripe table-bordered table-hover">
         <thead>
         <th>Nome</th>
@@ -24,7 +35,7 @@
     </table>
     {{$produtos->links()}}
 
-    <a href="{{ route('produtos.create', []) }}" class="btn btn-info">Adicionar</a>
+    <a id="btnAdd" href="{{ route('produtos.create', []) }}" class="btn btn-info">Adicionar</a>
 
 @stop
 

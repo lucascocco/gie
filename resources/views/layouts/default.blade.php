@@ -12,7 +12,7 @@
             }).then(function (isConfirm) {
                 if (isConfirm.value) {
                     $.get('/'+ @yield('table-delete')+'/'+id+'/destroy', function (data) {
-                        if (data.staus == 200) {
+                        if (data.status == 200) {
                             swal.fire('Deletado', 'Registro deletado com sucesso', 'success').then(function () {
                                 window.location.reload();
                             });
