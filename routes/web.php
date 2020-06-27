@@ -52,7 +52,9 @@ Route::group(['middleware'=>'auth'], function () {
     Route::group(['prefix'=>'movimentos', 'where'=>['id'=>'[0-9]+']], function() {
         Route::get('',             ['as'=>'movimentos',         'uses'=>'MovimentosController@index'  ]);
         Route::get('create',       ['as'=>'movimentos.create',  'uses'=>'MovimentosController@create' ]);
+        Route::get('setVariable',       ['as'=>'movimentos.setVariable',   'uses'=>'MovimentosController@setVariable'  ]);
         Route::post('store',       ['as'=>'movimentos.store',   'uses'=>'MovimentosController@store'  ]);
+//        Route::any('montaCampoProduto',       ['as'=>'movimentos.montaCampoProduto',   'uses'=>'MovimentosController@montaCampoProduto'  ]);
     });
     Route::group(['prefix'=>'cidades', 'where'=>['id'=>'[0-9]+']], function() {
         Route::get('',             ['as'=>'cidades',         'uses'=>'CidadesController@index'  ]);

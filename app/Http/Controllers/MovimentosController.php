@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MovimentosController extends Controller {
     public function create() {
+        $_SESSION['estoque_id'] = '';
         return view('movimentos.create');
     }
 
@@ -22,7 +23,7 @@ class MovimentosController extends Controller {
 
         $produtos = $request->produtos;
         $quantidades = $request->quantidade;
-        $cont = count($produtos);
+        $cont = count((array)$produtos);
 
         for ($i = 0; $i < $cont; $i++) {
             movimentoEstoque::create([
@@ -44,16 +45,13 @@ class MovimentosController extends Controller {
         return view('movimentos.index', ['movimentos'=>$movimentos]);
     }
 
-    public function destroy($id) {
-        try {
-            movimento::find($id)->delete();
-            $ret = array('status'=>200, 'msg'=>'NULL');
-        } catch (QueryException $e) {
-            $ret = array('status'=>500, 'msg'=>$e->getMessage());
-        } catch (\PDOException $e) {
-            $ret = array('status'=>500, 'msg'=>$e->getMessage());
-        }
+//    public function montaCampoProduto() {
+//        $str = Form::select("produtos[]", \App\Produto::join('produto_estoques', 'produto_id', '=', 'produtos.id')->where('estoque_id',  1)->orderBy("nome")->pluck("nome","produto_id")->toArray(), null, ["class"=>"form-control", "required", "placeholder"=>"Selecione um Produto"]);
+//        $str .= Form::number('quantidade[]', null, ['class'=>'form-control', 'required', 'style'=>'width: 30%; text-align: right']);
+//        return $str;
+//    }
 
-        return $ret;
+    public function setVariable($id){
+        $_SESSION['estoque_id'] = $id;
     }
 }

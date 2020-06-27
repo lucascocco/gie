@@ -49,8 +49,9 @@
             $(add_button).click(function(e){
                 x++;
                 estoque_id = $('#estoque_id').val();
-                var newField = '<div><div style="width:94%; float:left; display: inline-flex" id="produto">{!! Form::select("produtos[]", \App\Produto::join('produto_estoques', 'produto_id', '=', 'produtos.id')->where('estoque_id', 1)->orderBy("nome")->pluck("nome","produto_id")->toArray(), null, ["class"=>"form-control", "required", "placeholder"=>"Selecione um Produto"]) !!}{!! Form::number('quantidade[]', null, ['class'=>'form-control', 'required', 'style'=>'width: 30%; text-align: right']) !!}</div><button type="button" class="remove_field btn btn-danger btn-circle"><i class="fa fa-times"></button></div>';
+                var newField = '<div><div style="width:94%; float:left; display: inline-flex" id="produto">{!! Form::select("produtos[]", \App\Produto::join('produto_estoques', 'produto_id', '=', 'produtos.id')->where('estoque_id',  1)->orderBy("nome")->pluck("nome","produto_id")->toArray(), null, ["class"=>"form-control", "required", "placeholder"=>"Selecione um Produto"]) !!}{!! Form::number('quantidade[]', null, ['class'=>'form-control', 'required', 'style'=>'width: 30%; text-align: right']) !!}</div><button type="button" class="remove_field btn btn-danger btn-circle"><i class="fa fa-times"></button></div>';
                 $(wrapper).append(newField);
+
             });
             $(wrapper).on("click",".remove_field", function(e){
                 e.preventDefault();
@@ -61,3 +62,4 @@
     </script>
 
 @stop
+Or

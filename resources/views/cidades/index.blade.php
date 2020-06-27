@@ -42,7 +42,6 @@
             }).then(function (isConfirm) {
                 if (isConfirm.value) {
                     $.get('/cidades/atualizaCidades', function (data) {
-                        console.log(data);
                     });
                 }
             });
